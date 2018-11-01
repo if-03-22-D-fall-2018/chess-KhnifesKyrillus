@@ -1,9 +1,9 @@
 /*----------------------------------------------------------
- *				HTBLA-Leonding / Klasse: 2AHDV
+ *				HTBLA-Leonding / Klasse: 2DHIF
  * ---------------------------------------------------------
  * Exercise Number: 0
  * Title:			chess.c
- * Author:			P. Bauer
+ * Author:			Khnifes Kyrillus
  * Due Date:		November 03, 2010
  * ----------------------------------------------------------
  * Description:
