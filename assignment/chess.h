@@ -1,5 +1,5 @@
 /*----------------------------------------------------------
- *				HTBLA-Leonding / Klasse: 2AHDV
+ *				HTBLA-Leonding / Klasse: 2DHIF
  * ---------------------------------------------------------
  * Exercise Number: 0
  * Title:			chess.h
