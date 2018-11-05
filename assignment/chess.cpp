@@ -26,16 +26,78 @@ void init_chess_board(Chessboard chess_board)
 }
 void setup_chess_board(Chessboard chess_board)
 {
+  //White_Pawn
   for (size_t x = 0; x < 8; x++)
   {
     chess_board[1][x].piece.type=Pawn;
     chess_board[1][x].piece.color=White;
+    chess_board[1][x].is_occupied=true;
   }
+  //Black_Pawn
   for (size_t x = 0; x < 8; x++)
   {
     chess_board[6][x].piece.type=Pawn;
     chess_board[6][x].piece.color=Black;
+    chess_board[6][x].is_occupied=true;
   }
+  //White_Rook
+  chess_board[0][0].piece.type=Rook;
+  chess_board[0][0].piece.color=White;
+  chess_board[0][0].is_occupied=true;
+  chess_board[0][7].piece.type=Rook;
+  chess_board[0][7].piece.color=White;
+  chess_board[0][7].is_occupied=true;
+  //Black_Rook
+  chess_board[7][0].piece.type=Rook;
+  chess_board[7][0].piece.color=Black;
+  chess_board[7][0].is_occupied=true;
+  chess_board[7][7].piece.type=Rook;
+  chess_board[7][7].piece.color=Black;
+  chess_board[7][7].is_occupied=true;
+  //White_Knight
+  chess_board[0][1].piece.type=Knight;
+  chess_board[0][1].piece.color=White;
+  chess_board[0][1].is_occupied=true;
+  chess_board[0][6].piece.type=Knight;
+  chess_board[0][6].piece.color=White;
+  chess_board[0][6].is_occupied=true;
+  //Black_Knight
+  chess_board[7][1].piece.type=Knight;
+  chess_board[7][1].piece.color=White;
+  chess_board[7][1].is_occupied=true;
+  chess_board[7][6].piece.type=Knight;
+  chess_board[7][6].piece.color=White;
+  chess_board[7][6].is_occupied=true;
+  //White_Bishop
+  chess_board[0][2].piece.type=Bishop;
+  chess_board[0][2].piece.color=White;
+  chess_board[0][2].is_occupied=true;
+  chess_board[0][5].piece.type=Bishop;
+  chess_board[0][5].piece.color=White;
+  chess_board[0][5].is_occupied=true;
+  //Black_Bishop
+  chess_board[7][2].piece.type=Bishop;
+  chess_board[7][2].piece.color=Black;
+  chess_board[7][2].is_occupied=true;
+  chess_board[7][5].piece.type=Bishop;
+  chess_board[7][5].piece.color=Black;
+  chess_board[7][5].is_occupied=true;
+  //White King
+  chess_board[0][3].piece.type=King;
+  chess_board[0][3].piece.color=White;
+  chess_board[0][3].is_occupied=true;
+  //Black_King
+  chess_board[7][3].piece.type=King;
+  chess_board[7][3].piece.color=Black;
+  chess_board[7][3].is_occupied=true;
+  //White_Queen
+  chess_board[0][4].piece.type=Queen;
+  chess_board[0][4].piece.color=White;
+  chess_board[0][4].is_occupied=true;
+  //Black_Queen
+  chess_board[7][4].piece.type=Queen;
+  chess_board[7][4].piece.color=Black;
+  chess_board[7][4].is_occupied=true;
 }
 /*
 struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank);
