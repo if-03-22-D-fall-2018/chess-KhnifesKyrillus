@@ -41,7 +41,7 @@
 
 
  typedef int Rank;
- typedef char File;
+ typedef unsigned char File;
  typedef ChessSquare ChessBoard[8][8];
  typedef ChessSquare Chessboard[8][8];
  void init_chess_board(Chessboard chess_board);

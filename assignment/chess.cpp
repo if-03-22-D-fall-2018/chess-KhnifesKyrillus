@@ -99,14 +99,49 @@ void setup_chess_board(Chessboard chess_board)
   chess_board[7][4].piece.color=Black;
   chess_board[7][4].is_occupied=true;
 }
-/*
-struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank);
-bool add_piece(ChessBoard chess_board, File file ,Rank rank,struct ChessPiece piece);
-struct ChessPiece get_piece(ChessBoard chess_board, File file ,File rank);
-bool remove_piece(ChessBoard chess_board, File file ,Rank rank);*/
+
+struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
+{
+  if((file > 'h' || file < 'a') && (rank > 8 || rank < 1))
+  {
+    return 0;
+  }
+  return &chess_board[rank][file-'a'];
+
+}
+struct ChessPiece get_piece(ChessBoard chess_board, File file ,File rank)
+{
+  struct ChessPiece piece;
+  if(file>'h'||rank>7||rank<0||file<'a')
+  {
+    piece.type=NoPiece;
+    return piece;
+  }
+  piece.type=chess_board[rank][file-'a'].piece.type;
+  piece.color=chess_board[rank][file-'a'].piece.color;
+  return piece;
+}
+bool remove_piece(ChessBoard chess_board, File file ,Rank rank)
+{
+  if(file>'h'||rank>7||rank<0||file<'a')
+  {
+    return false;
+  }
+  chess_board[rank][file-'a'].is_occupied=false;
+  return true;
+}
+bool add_piece(ChessBoard chess_board, File file ,Rank rank,struct ChessPiece piece)
+{
+  if (!is_square_occupied(chess_board, file, rank))
+  {
+    chess_board[rank][file-'a'].piece=piece;
+    return true;
+  }
+  return false;
+}
 bool is_square_occupied(ChessBoard chess_board,File file, Rank rank)
 {
-  return chess_board[rank][file-'0'].is_occupied;
+  return chess_board[rank][file-'a'].is_occupied;
 }
 bool is_piece(struct ChessPiece piece, enum Color color ,enum PieceType type)
 {
@@ -125,7 +160,7 @@ bool squares_share_file(File file1, Rank rank1, File file2, Rank rank2)
 }
 bool squares_share_diagonal(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return file1-file2-'0'==rank1-rank2;
+  return file1-file2-'a'*2==rank1-rank2;
 }
 
 /*bool squares_share_knights_move(File file1, Rank rank1, File file2, Rank rank2);
