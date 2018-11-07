@@ -52,11 +52,7 @@ void setup_chess_board(Chessboard chess_board)
 
 struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
 {
-<<<<<<< HEAD
   if((file > 'h' || file < 'a') && (rank > 8 || rank < 1) || chess_board[rank][file-'a'].is_occupied)
-=======
-  if((file > 'h' || file < 'a') && (rank > 8 || rank < 1) || chess_board.is_occupied)
->>>>>>> 4debf7d59c644237884c731b7eac555d97e8b533
   {
     return 0;
   }
