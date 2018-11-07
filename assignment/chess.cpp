@@ -31,22 +31,22 @@ void setup_chess_board(Chessboard chess_board)
     add_piece(chess_board, x, 0, {White, Pawn});
     add_piece(chess_board, x, 7, {Black, Pawn});
   }
-   add_piece(chess_board, 'a', 0, {White, Rook});
-   add_piece(chess_board, 'h', 0, {White, Rook});
-   add_piece(chess_board, 'b', 0, {White, Knight});
-   add_piece(chess_board, 'g', 0, {White, Knight});
-   add_piece(chess_board, 'c', 0, {White, Bishop});
- 	 add_piece(chess_board, 'f', 0, {White, Bishop});
- 	 add_piece(chess_board, 'd', 0, {White, Queen});
- 	 add_piece(chess_board, 'e', 0, {White, King});
- 	 add_piece(chess_board, 'a', 7, {Black, Rook});
- 	 add_piece(chess_board, 'h', 7, {Black, Rook});
- 	 add_piece(chess_board, 'b', 7, {Black, Knight});
-   add_piece(chess_board, 'g', 7, {Black, Knight});
-   add_piece(chess_board, 'c', 7, {Black, Bishop});
- 	 add_piece(chess_board, 'f', 7, {Black, Bishop});
- 	 add_piece(chess_board, 'd', 7, {Black, Queen});
- 	 add_piece(chess_board, 'e', 7, {Black, King});
+  add_piece(chess_board, 'a', 0, {White, Rook});
+  add_piece(chess_board, 'h', 0, {White, Rook});
+  add_piece(chess_board, 'b', 0, {White, Knight});
+  add_piece(chess_board, 'g', 0, {White, Knight});
+  add_piece(chess_board, 'c', 0, {White, Bishop});
+ 	add_piece(chess_board, 'f', 0, {White, Bishop});
+ 	add_piece(chess_board, 'd', 0, {White, Queen});
+ 	add_piece(chess_board, 'e', 0, {White, King});
+ 	add_piece(chess_board, 'a', 7, {Black, Rook});
+ 	add_piece(chess_board, 'h', 7, {Black, Rook});
+ 	add_piece(chess_board, 'b', 7, {Black, Knight});
+  add_piece(chess_board, 'g', 7, {Black, Knight});
+  add_piece(chess_board, 'c', 7, {Black, Bishop});
+ 	add_piece(chess_board, 'f', 7, {Black, Bishop});
+ 	add_piece(chess_board, 'd', 7, {Black, Queen});
+ 	add_piece(chess_board, 'e', 7, {Black, King});
 }
 
 struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
