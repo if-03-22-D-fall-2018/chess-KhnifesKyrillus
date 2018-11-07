@@ -103,9 +103,7 @@ bool squares_share_rank(File file1, Rank rank1, File file2, Rank rank2)
 }
 bool squares_share_file(File file1, Rank rank1, File file2, Rank rank2)
 {
-  {
-    return file1==file2;
-  }
+  return file1==file2;
 }
 bool squares_share_diagonal(File file1, Rank rank1, File file2, Rank rank2)
 {
@@ -114,24 +112,25 @@ bool squares_share_diagonal(File file1, Rank rank1, File file2, Rank rank2)
 
 bool squares_share_knights_move(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return rank1+1=rank2 && file1+2=file2 ||rank1-1=rank2 && file1-2=file2||rank1+2=rank2 && file1+1=file2 ||rank1-2=rank2 && file1-1=file2;
+  return (rank1+1=rank2 && file1+2==file2) ||(rank1-1==rank2 && file1-2==file2)||(rank1+2==rank2 && file1+1==file2)||(rank1-2==rank2 && file1-1==file2);
 }
 bool squares_share_kings_move(File file1, Rank rank1, File file2, Rank rank2)
 {
   return false;
 }
-bool squares_share_pawns_move(enum Color color, enum PawnMoves move, File file1, Rank rank1, File file2, Rank rank2)
+bool squares_share_pawns_move(enum Color color, enum PawnMoves moves, File file1, Rank rank1, File file2, Rank rank2)
 {
   if (moves==NormalMove)
   {
-    return rank1+1=rank2||rank1-1=rank2;
+    return rank1+1==rank2||rank1-1==rank2;
   }
   else  if (moves==CaptureMove)
   {
-    return rank1+1=rank2 && file1+1=file2 ||rank1-1=rank2 && file1-1=file2;
+    return (rank1+1==rank2 && file1+1==file2) ||(rank1-1==rank2 && file1-1==file2);
   }
+  return false;
 }
 bool squares_share_queens_move(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return false;
+  return squares_share_diagonal(file1,rank1,file2,rank2)||file1==file2||rank1==rank2;
 }
