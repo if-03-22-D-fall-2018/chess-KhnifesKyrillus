@@ -102,11 +102,10 @@ void setup_chess_board(Chessboard chess_board)
 
 struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
 {
-  if((file > 'h' || file < 'a') && (rank > 8 || rank < 1))
-  {
+  if((file > 'h' || file < 'a') && (rank > 8 || rank < 1)){
     return 0;
   }
-  return &chess_board[rank][file-'a'];
+  return &chess_board[rank][(file];
 
 }
 struct ChessPiece get_piece(ChessBoard chess_board, File file ,File rank)
@@ -163,7 +162,7 @@ bool squares_share_diagonal(File file1, Rank rank1, File file2, Rank rank2)
   return file1-file2-'a'*2==rank1-rank2;
 }
 
-/*bool squares_share_knights_move(File file1, Rank rank1, File file2, Rank rank2);
+/*sbool squares_share_knights_move(File file1, Rank rank1, File file2, Rank rank2);
 bool squares_share_kings_move(File file1, Rank rank1, File file2, Rank rank2);
 bool squares_share_pawns_move(enum Color color, enum PawnMoves move, File file1, Rank rank1, File file2, Rank rank2);
 bool squares_share_queens_move(File file1, Rank rank1, File file2, Rank rank2);
