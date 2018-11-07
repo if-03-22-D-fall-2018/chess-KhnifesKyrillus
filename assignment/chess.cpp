@@ -133,5 +133,5 @@ bool squares_share_pawns_move(enum Color color, enum PawnMoves move, File file1,
 }
 bool squares_share_queens_move(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return false;s
+  return false;
 }
