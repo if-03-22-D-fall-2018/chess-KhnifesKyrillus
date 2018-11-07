@@ -52,7 +52,7 @@ void setup_chess_board(Chessboard chess_board)
 
 struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
 {
-  if((file > 'h' || file < 'a') && (rank > 8 || rank < 1) || chess_board[rank][file-'a'].is_occupied)
+  if(file > 'h' || (file < 'a' && rank > 8) || rank < 1 || chess_board[rank][file-'a'].is_occupied)
   {
     return 0;
   }
@@ -62,7 +62,7 @@ struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
 struct ChessPiece get_piece(ChessBoard chess_board, File file ,File rank)
 {
   struct ChessPiece piece;
-  if(file>'h'||rank>7||rank<0||file<'a'|| !chess_board[rank][file-'a'].is_occupied))
+  if(file>'h'||rank>7||rank<0||file<'a'|| !chess_board[rank][file-'a'].is_occupied)
   {
     piece.type=NoPiece;
     return piece;
