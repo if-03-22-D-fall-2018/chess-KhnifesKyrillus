@@ -112,7 +112,7 @@ bool squares_share_diagonal(File file1, Rank rank1, File file2, Rank rank2)
 
 bool squares_share_knights_move(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return (rank1+1=rank2 && file1+2==file2) ||(rank1-1==rank2 && file1-2==file2)||(rank1+2==rank2 && file1+1==file2)||(rank1-2==rank2 && file1-1==file2);
+  return (rank1+1==rank2 && file1+2==file2) ||(rank1-1==rank2 && file1-2==file2)||(rank1+2==rank2 && file1+1==file2)||(rank1-2==rank2 && file1-1==file2);
 }
 bool squares_share_kings_move(File file1, Rank rank1, File file2, Rank rank2)
 {
