@@ -27,7 +27,7 @@ void init_chess_board(Chessboard chess_board)
 
 void setup_chess_board(Chessboard chess_board)
 {
-  for (size_t x = 'a'; x < 8+'a'; x++)
+  for (size_t x = 0; x < 8; x++)
   {
     add_piece(chess_board, x, 0, {White, Pawn});
     add_piece(chess_board, x, 7, {Black, Pawn});
@@ -52,11 +52,20 @@ void setup_chess_board(Chessboard chess_board)
 
 struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
 {
-  if(file > 'h' || (file < 'a' && rank > 8) || rank < 1 || chess_board[rank][file-'a'].is_occupied)
+  if(file > 'h' || (file < 'a' && rank > 8) || rank < 1)
   {
     return 0;
   }
-  return &chess_board[rank][file];
+  return &chess_board[rank-1][file-'a'];
+}
+
+bool is_square_occupied(ChessBoard chess_board,File file, Rank rank)
+{
+  struct ChessSquare* sqare = get_square(chess_board, file, rank);
+  if (sqare != 0) {
+    return sqare->is_occupied;
+  }
+  return false;
 }
 
 struct ChessPiece get_piece(ChessBoard chess_board, File file ,File rank)
@@ -91,11 +100,6 @@ bool add_piece(ChessBoard chess_board, File file ,Rank rank,struct ChessPiece pi
     return true;
   }
   return false;
-}
-
-bool is_square_occupied(ChessBoard chess_board,File file, Rank rank)
-{
-  return chess_board[rank][file-'a'].is_occupied;
 }
 
 bool is_piece(struct ChessPiece piece, enum Color color ,enum PieceType type)
