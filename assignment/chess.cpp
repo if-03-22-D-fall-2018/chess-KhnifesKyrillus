@@ -14,6 +14,11 @@
  #include "general.h"
  #include "chess.h"
 
+bool are_coordinates_ok(File file1, Rank rank1, File file2, Rank rank2)
+{
+   return file1 <= 'h' && file1 >= 'a' && rank1 <= 8 && rank1 >= 1&&file2 <= 'h' && file2 >= 'a' && rank2 <= 8 && rank2 >= 1;
+}
+
 void init_chess_board(Chessboard chess_board)
 {
   for (size_t y = 0; y < 8; y++)
@@ -21,6 +26,7 @@ void init_chess_board(Chessboard chess_board)
     for (size_t x = 0; x < 8; x++)
     {
       chess_board[y][x].is_occupied=false;
+      chess_board[y][x].piece.type=NoPiece;
     }
   }
 }
@@ -110,17 +116,29 @@ bool is_piece(struct ChessPiece piece, enum Color color ,enum PieceType type)
 
 bool squares_share_rank(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return rank1==rank2;
+  if (are_coordinates_ok(file1,rank1,file2,rank2))
+  {
+    return rank1==rank2;
+  }
+  return false;
 }
 
 bool squares_share_file(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return file1==file2;
+  if (are_coordinates_ok(file1,rank1,file2,rank2))
+  {
+    return file1==file2;
+  }
+  return false;
 }
 
 bool squares_share_diagonal(File file1, Rank rank1, File file2, Rank rank2)
 {
-  return (unsigned int) file1-file2-'a'*2==rank1-rank2-2;
+  if (are_coordinates_ok(file1,rank1,file2,rank2))
+  {
+    return (unsigned int) file1-file2-'a'*2==rank1-rank2;
+  }
+  return false;
 }
 
 bool squares_share_knights_move(File file1, Rank rank1, File file2, Rank rank2)
