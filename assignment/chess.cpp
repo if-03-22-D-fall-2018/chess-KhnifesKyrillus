@@ -29,25 +29,25 @@ void setup_chess_board(Chessboard chess_board)
 {
   for (size_t x = 0; x < 8; x++)
   {
-    add_piece(chess_board, x, 0, {White, Pawn});
-    add_piece(chess_board, x, 6, {Black, Pawn});
+    add_piece(chess_board, x, 1, {White, Pawn});
+    add_piece(chess_board, x, 7, {Black, Pawn});
   }
-  add_piece(chess_board, 'a', 0, {White, Rook});
-  add_piece(chess_board, 'h', 0, {White, Rook});
-  add_piece(chess_board, 'b', 0, {White, Knight});
-  add_piece(chess_board, 'g', 0, {White, Knight});
-  add_piece(chess_board, 'c', 0, {White, Bishop});
- 	add_piece(chess_board, 'f', 0, {White, Bishop});
- 	add_piece(chess_board, 'd', 0, {White, Queen});
- 	add_piece(chess_board, 'e', 0, {White, King});
- 	add_piece(chess_board, 'a', 7, {Black, Rook});
- 	add_piece(chess_board, 'h', 7, {Black, Rook});
- 	add_piece(chess_board, 'b', 7, {Black, Knight});
-  add_piece(chess_board, 'g', 7, {Black, Knight});
-  add_piece(chess_board, 'c', 7, {Black, Bishop});
- 	add_piece(chess_board, 'f', 7, {Black, Bishop});
- 	add_piece(chess_board, 'd', 7, {Black, Queen});
- 	add_piece(chess_board, 'e', 7, {Black, King});
+  add_piece(chess_board, 'a', 1, {White, Rook});
+  add_piece(chess_board, 'h', 1, {White, Rook});
+  add_piece(chess_board, 'b', 1, {White, Knight});
+  add_piece(chess_board, 'g', 1, {White, Knight});
+  add_piece(chess_board, 'c', 1, {White, Bishop});
+ 	add_piece(chess_board, 'f', 1, {White, Bishop});
+ 	add_piece(chess_board, 'd', 1, {White, Queen});
+ 	add_piece(chess_board, 'e', 1, {White, King});
+ 	add_piece(chess_board, 'a', 8, {Black, Rook});
+ 	add_piece(chess_board, 'h', 8, {Black, Rook});
+ 	add_piece(chess_board, 'b', 8, {Black, Knight});
+  add_piece(chess_board, 'g', 8, {Black, Knight});
+  add_piece(chess_board, 'c', 8, {Black, Bishop});
+ 	add_piece(chess_board, 'f', 8, {Black, Bishop});
+ 	add_piece(chess_board, 'd', 8, {Black, Queen});
+ 	add_piece(chess_board, 'e', 8, {Black, King});
 }
 
 struct ChessSquare* get_square(ChessBoard chess_board,File file, Rank rank)
@@ -86,6 +86,7 @@ bool remove_piece(ChessBoard chess_board, File file ,Rank rank)
   if(is_square_occupied(chess_board,file,rank))
   {
     chess_board[rank-1][file-'a'].is_occupied=false;
+    chess_board[rank-1][file-'a'].piece.type=NoPiece;
     return true;
   }
   return false;
@@ -93,7 +94,7 @@ bool remove_piece(ChessBoard chess_board, File file ,Rank rank)
 
 bool add_piece(ChessBoard chess_board, File file ,Rank rank,struct ChessPiece piece)
 {
-  if (!is_square_occupied(chess_board,file,rank))
+  if (!is_square_occupied(chess_board,file,rank)&& file <= 'h' && file >= 'a' && rank <= 8 && rank >= 1)
   {
     chess_board[rank-1][file-'a'].piece=piece;
     chess_board[rank-1][file-'a'].is_occupied=true;
