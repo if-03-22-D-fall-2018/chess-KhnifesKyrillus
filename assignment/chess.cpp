@@ -33,9 +33,10 @@ void init_chess_board(Chessboard chess_board)
 
 void setup_chess_board(Chessboard chess_board)
 {
-  for (size_t x = 0; x < 8; x++)
+  init_chess_board(chess_board);
+  for (char x = 'a'; x <= 'h'; x++)
   {
-    add_piece(chess_board, x, 1, {White, Pawn});
+    add_piece(chess_board, x, 2, {White, Pawn});
     add_piece(chess_board, x, 7, {Black, Pawn});
   }
   add_piece(chess_board, 'a', 1, {White, Rook});
@@ -136,7 +137,7 @@ bool squares_share_diagonal(File file1, Rank rank1, File file2, Rank rank2)
 {
   if (are_coordinates_ok(file1,rank1,file2,rank2))
   {
-    return (unsigned int) file1-file2-'a'*2==rank1-rank2;
+    return (unsigned int) file1-file2==rank1-rank2;
   }
   return false;
 }
